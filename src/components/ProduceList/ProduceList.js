@@ -13,7 +13,10 @@ function ProduceList() {
       {!produceArr.length && <span>No produce available right now.</span>}
       <ul className="produce-list">
         {produceArr.map((produce) => (
-          <ProduceDetails key={produce.id} produce={produce} />
+          <ProduceDetails
+          key={produce.id}
+          produce={produce}
+          />
         ))}
       </ul>
     </>

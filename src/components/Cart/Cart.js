@@ -1,10 +1,13 @@
 import CartItem from './CartItem';
 import './Cart.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { addToCart } from '../../store/cart';
 
 function Cart() {
-  const cart = {};
-  const produce = {};
-
+  const cart = useSelector(state => state.cart);
+  const produce = useSelector(state => state.produce);
+  const dispatch = useDispatch();
   const cartItems = Object.values(cart)
     .map(item => {
       return {
@@ -12,6 +15,12 @@ function Cart() {
         ...produce[item.id]
       };
     });
+
+  useEffect(() => {
+    cartItems.forEach(item => {
+      dispatch(addToCart(item.id));
+    });
+  }, [dispatch, produce]);
 
   if (!cartItems || !cartItems.length) return (
     <div className="cart">
