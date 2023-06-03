@@ -7,6 +7,7 @@ function ProduceDetails({ produce }) {
 
   const handleAddToCart = () => {
     dispatch(addToCart(produce.id));
+    
   };
 
   const handleLike = () => {
